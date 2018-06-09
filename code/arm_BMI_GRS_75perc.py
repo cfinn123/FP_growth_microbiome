@@ -1,39 +1,47 @@
 import pandas as pd
-import numpy as np
 import Orange
 from orangecontrib.associate.fpgrowth import *
 
-df = pd.read_csv('BMI_GRS_arm_75perc/BMI_GRS_subsampled_75.opti_mcc.relabund', sep='\t', index_col='Group', )
-print(df)
+
+# read in my relative abundance table which is an m x n datframe (samples are rows, OTUs are columns output from Mothur)
+df = pd.read_csv('../data/BMI_GRS_subsampled_75.opti_mcc.relabund', sep='\t', index_col='Group')
+
+# drop sonme unwanted columns from the datafram
 df = df.iloc[:, 2:]
 
-# cutoff at 0.5% presence
+# if the relative abundance is above 0.1, indicate presence with 1
 df1 = df.where(df <= 0.001, 1)
-df1 = df1.where(df1 >= 0.001, 0)
-
+# if the relative abundance is below 0.1, indicate presence with 0
+df1 = df1.where(df1 >= 0.001, 0).astype(int)
 df2 = df1.loc[:, df1.var() != 0.0]
 
-bmap = {1: True, 0: False}
+# write out the processed data that has been converted, this can be used in the follwoing steps as well as uploaded
+# into the Orange GUI to test out and compare
+df2.to_csv('../data/BMI_GRS_0.001_75.tab', sep='\t', index=False)
 
-df2.to_csv('BMI_GRS_arm_75perc/BMI_GRS_0.001_75.csv')
-# print(df2)
+## Steps below are very similar to the documentation provide from Orange
 
-table = Orange.data.Table('BMI_GRS_0.001_75.tab')
+# Read in the tab seperated file created in the previous step as Orange.data.table
+table = Orange.data.Table('../data/BMI_GRS_0.001_75.tab')
 
+# Apply one-hot transformation to the data resulting in booleans
 X, mapping = OneHot.encode(table, include_class=False)
 
-itemsets = dict(frequent_itemsets(X, .95))
+# Mine items sets from the data, parameters are the one-hot transformed data and a min support cutoff
+itemsets = dict(frequent_itemsets(X, .90))
 
-rules = association_rules(itemsets, .95)
+# Obtain rule sets from the itemset, parameters are the itemset previously obtained and a min confidence cutoff
+rules = list(association_rules(itemsets, .90))
 
-rules = list(rules)
-
+# decode the one.hot encoding
 names = {item: '{}={}'.format(var.name, val)
          for item, var, val in OneHot.decode(mapping, table, mapping)}
 
-with open('out.txt', 'w') as f:
+# write out the results of the rules mined as a text file
+with open('../data/results.txt', 'w') as f:
     for ante, cons, supp, conf in rules[:]:
         supp = supp*2
         print(', '.join(names[i] for i in ante), '-->',
               names[next(iter(cons))],
               '(supp: {}, conf: {})'.format(supp, conf), file=f)
+
