@@ -2,8 +2,6 @@
 
 By: **Casey Finnicum**  06/09/18
 
-**Orange3 citation**: Demsar J, Curk T, Erjavec A, Gorup C, Hocevar T, Milutinovic M, Mozina M, Polajnar M, Toplak M, Staric A, Stajdohar M, Umek L, Zagar L, Zbontar J, Zitnik M, Zupan B (2013) Orange: Data Mining Toolbox in Python. Journal of Machine Learning Research 14(Aug):2349−2353.
-
 **This repository shows how to apply the FP-growth associatice rule mining process to microbiome data using the Orange3 python package**
 
 
@@ -17,4 +15,7 @@ By: **Casey Finnicum**  06/09/18
 
 - Results can be replicated using the Orange GUI version. The file fp_growth_relative_abundance.ows contains the same example analysis performed using the Orange3 GUI.
 
+
+**Orange3 citation**
+Demsar J, Curk T, Erjavec A, Gorup C, Hocevar T, Milutinovic M, Mozina M, Polajnar M, Toplak M, Staric A, Stajdohar M, Umek L, Zagar L, Zbontar J, Zitnik M, Zupan B (2013) Orange: Data Mining Toolbox in Python. Journal of Machine Learning Research 14(Aug):2349−2353.
 
