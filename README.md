@@ -15,4 +15,6 @@ By: **Casey Finnicum**  06/09/18
 
 - `results.txt` will contain the results of the mined rules.
 
+- Results can be replicated using the Orange GUI version. The file fp_growth_relative_abundance.ows contains the same example analysis performed using the Orange3 GUI.
+
 
