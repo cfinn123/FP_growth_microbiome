@@ -13,7 +13,8 @@ df = df.iloc[:, 2:]
 df1 = df.where(df <= 0.001, 1)
 # if the relative abundance is below 0.1, indicate presence with 0
 df1 = df1.where(df1 >= 0.001, 0)
-# remove OTUs that have 0 variance
+# remove OTUs that have 0 variance and convert to ints
+# remove OTUs that have 0 variance and convert to int
 df2 = df1.loc[:, df1.var() != 0.0].astype(int)
 
 # write out the processed data that has been converted, this can be used in the follwoing steps as well as uploaded
