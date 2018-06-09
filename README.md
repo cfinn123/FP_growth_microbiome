@@ -2,7 +2,7 @@
 
 By: **Casey Finnicum**  06/09/18
 
-**This repository shows how to apply the FP-growth associatice rule mining process to microbiome data using the Orange3 python package**
+**This repository demonstrates how to apply the FP-growth associative rule mining algorithm to microbiome data using the Orange3 python package**
 
 
 - The example file `data/test.relabund` is an example relative abundance file that would be output from the mothur software. This file is an **m x n** data frame where **m is the samples and n is the various OTUs**.
