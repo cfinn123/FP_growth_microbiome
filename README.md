@@ -1,6 +1,6 @@
 # FP-growth application to microbiome data
 
-By: **Casey Finnicum**
+By: **Casey Finnicum**  06/09/18
 
 **Orange3 citation**: Demsar J, Curk T, Erjavec A, Gorup C, Hocevar T, Milutinovic M, Mozina M, Polajnar M, Toplak M, Staric A, Stajdohar M, Umek L, Zagar L, Zbontar J, Zitnik M, Zupan B (2013) Orange: Data Mining Toolbox in Python. Journal of Machine Learning Research 14(Aug):2349−2353.
 
