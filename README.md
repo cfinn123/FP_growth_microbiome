@@ -7,9 +7,9 @@ By: **Casey Finnicum**  06/09/18
 **This repository shows how to apply the FP-growth associatice rule mining process to microbiome data using the Orange3 python package**
 
 
-- The example file `data/test.relabund` is an example relative abundance file that would be output from the mothur software. This file is m x n where m are the samples and n are the various OTUs.
+- The example file `data/test.relabund` is an example relative abundance file that would be output from the mothur software. This file is an **m x n** data frame where **m is the samples and n is the various OTUs**.
 
-- Data input into the associative rule mining process must be discretized in some manner. The script `code/FP_growth_0.1.py` does this by indicating an OTU is present if it reaches the 0.1% relative abundance cutoff but the proper way to discretize microbiome data is still an open question.
+- Data input into the associative rule mining process must be discretized in some manner. The script `code/FP_growth_0.1.py` does this by indicating an OTU is present if it reaches the **0.1% relative abundance cutoff** but the proper way to discretize microbiome data is still an open question. 
 
 - Execution of `code/FP_growth_0.1.py` will output `results.txt` as well as `test.tab` which can be used to test the similarity of results obtained using the GUI version of Orange3
 
