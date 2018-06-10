@@ -14,7 +14,7 @@ df1 = df.where(df <= 0.001, 1)
 df1 = df1.where(df >= 0.001, 0)
 print(df1)
 # Drop rareOTUs as this is actually a combination of OTUs from the mothur filtering stages
-# df1 = df1.drop('rareOTUs349', axis=1)
+df1 = df1.drop('rareOTUs349', axis=1)
 print(df1)
 
 # write out the processed data that has been converted, this can be used in the following steps as well as uploaded
