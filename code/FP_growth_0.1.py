@@ -6,16 +6,15 @@ from orangecontrib.associate.fpgrowth import *
 # File is an output from the program mothur, values are relative abundance values
 df = pd.read_csv('../data/test.relabund', sep='\t')
 
-# drop s0me unwanted columns from the dataframe
+# drop some unwanted columns from the dataframe
 df = df.iloc[:, 3:]
-print(df)
+
 # if the relative abundance is above 0.1%, indicate presence with 1 else given 0
 df1 = df.where(df <= 0.001, 1)
 df1 = df1.where(df >= 0.001, 0)
-print(df1)
+
 # Drop rareOTUs as this is actually a combination of OTUs from the mothur filtering stages
 df1 = df1.drop('rareOTUs349', axis=1)
-print(df1)
 
 # write out the processed data that has been converted, this can be used in the following steps as well as uploaded
 # into the Orange GUI to test out and compare
