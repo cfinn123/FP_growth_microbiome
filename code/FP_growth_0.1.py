@@ -4,21 +4,18 @@ from orangecontrib.associate.fpgrowth import *
 
 # Read in my relative abundance table which is an m x n dataframe (samples are rows, OTUs are columns.
 # File is an output from the program mothur, values are relative abundance values
-df = pd.read_csv('../data/test.relabund', sep='\t', index_col='Group')
+df = pd.read_csv('../data/test.relabund', sep='\t')
 
 # drop snme unwanted columns from the dataframe
-df = df.iloc[:, 2:]
-
-# if the relative abundance is above 0.1%, indicate presence with 1
-df1 = df.where(df <= 0.001, 1)
-# if the relative abundance is below 0.1%, indicate absence with 0
-df1 = df1.where(df1 >= 0.001, 0)
-# remove OTUs that have 0 variance and convert to ints
-df2 = df1.loc[:, df1.var() != 0.0].astype(int)
+df = df.iloc[:, 3:]
+print(df)
+# if the relative abundance is above 0.1%, indicate presence with 1 else given 0
+df1 = df.where(df <= 0.001, 1).astype(int)
+print(df1)
 
 # write out the processed data that has been converted, this can be used in the following steps as well as uploaded
 # into the Orange GUI to test out and compare
-df2.to_csv('../data/test.tab', sep='\t', index=False)
+df1.to_csv('../data/test.tab', sep='\t', index=False)
 
 # Steps below are very similar to the documentation provide from Orange
 
