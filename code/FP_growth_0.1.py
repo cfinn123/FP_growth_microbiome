@@ -41,7 +41,7 @@ names = {item: '{}={}'.format(var.name, val)
 # write out the results of the rules mined as a text file
 with open('../data/results.txt', 'w') as f:
     for ante, cons, supp, conf in rules[:]:
-        supp = supp * 2
+        supp = supp / len(df1)
         print(', '.join(names[i] for i in ante), '-->',
               names[next(iter(cons))],
               '(supp: {}, conf: {})'.format(supp, conf), file=f)
