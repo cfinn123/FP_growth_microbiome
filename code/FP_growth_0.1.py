@@ -26,10 +26,10 @@ table = Orange.data.Table('../data/test.tab')
 X, mapping = OneHot.encode(table, include_class=False)
 
 # Mine items sets from the data, parameters are the one-hot transformed data and a min support cutoff
-itemsets = dict(frequent_itemsets(X, .90))
+itemsets = dict(frequent_itemsets(X, .95))
 
 # Obtain rule sets from the itemset, parameters are the itemset previously obtained and a min confidence cutoff
-rules = list(association_rules(itemsets, .90))
+rules = list(association_rules(itemsets, .95))
 
 # decode the one.hot encoding
 names = {item: '{}={}'.format(var.name, val)
