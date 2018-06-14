@@ -11,7 +11,7 @@ df = df.iloc[:, 3:]
 
 # if the relative abundance is above 0.1%, indicate presence with 1 else given 0
 df1 = df.where(df <= 0.001, 1)
-df1 = df1.where(df >= 0.001, 0)
+df1 = df1.where(df > 0.001, 0)
 
 # Drop rareOTUs as this is actually a combination of OTUs from the mothur filtering stages
 df1 = df1.drop('rareOTUs349', axis=1)
