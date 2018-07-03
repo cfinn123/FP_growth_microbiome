@@ -16,7 +16,3 @@ def binary_2_basket(input_file, out_name, file_sep=','):
         writer.writerows(otu_columns_true)
 
 
-binary_2_basket('../data/test.tab', '../data/output.basket', file_sep='\t')
-
-binary_2_basket('../data/test_airu.tab', '../data/output_airu.basket', file_sep='\t')
-
